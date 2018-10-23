@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 
 class FamousPerson extends Component {
     state = {
-        name: 'S',
-        role: 'k'
+        person: {
+            name: '',
+            role: ''
+        }
     }
 
     handleChangeFor = (propertyName) => {
         return (event) => {
             this.setState({
-                ...this.state,
-                [propertyName]: event.target.value
+                person:{
+                    ...this.state.person,
+                    [propertyName]: event.target.value
+                }
             });
         }
     }
@@ -20,7 +24,8 @@ class FamousPerson extends Component {
             <section>
                 <input onChange={ this.handleChangeFor('name') } placeholder="name"/>
                 <input onChange={ this.handleChangeFor('role') } placeholder="role"/>
-                <p>{this.state.name} is famous for {this.state.role}.</p>
+                <p>{this.state.person.name} is famous for {this.state.person.role}.</p>
+                <button>Submit</button>
             </section>
         )
         }
